@@ -26,6 +26,12 @@ News discovery – passengers discover local news they would not normally come a
 
 Educate & Entertain – passengers can learn words or popular recipes for the countries they fly above. They can also discover famous landmarks and observe their changes within years. They can explore the best restaurants or bars.
 
+Offline use - this application uses GPS so it can be used offline. As Wi-Fi becomes available in more airlines in the near future, this application will have richer information
+
+## BUSINESS MODEL
+
+Our customers are mainly airline companies who want to increase the comfort level of the passengers. We hope that by providing this app, particular passenger groups (like families with young children and nervous flyers) will be more enthusiastic about travelling with this carrier.
+
 ## RESOURCES
 
 * Google maps
