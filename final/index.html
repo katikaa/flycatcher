@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="js/OSMBuildings.css">
+    <script src="js/OSMBuildings.js"></script>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+      }
+      #map {
+        width: 60%;
+        height: 100%;
+      }
+      #labels {
+        z-Index:10;
+      }
+      #info {
+        position:absolute;
+      }
+      .label {
+        z-Index:10;
+        position:absolute;
+        background-color: white; 
+      }
+      #iframe {
+        border:0px solid white;
+        position: relative;
+        width:100%;
+        height:100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map" class="map"></div>
+    <div id="labels"><!-- <div id="label0">Label</div> --></div>
+    <div id="info" style='height:100%'></div>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script>
+
+      function navigate() {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            data.init(position.coords.latitude, position.coords.longitude);
+          });
+      }
+
+      function initialized() {
+          if(data.initialized == false) {
+            window.setTimeout(initialized, 100); 
+          } else {
+            console.log('Finito');
+            var mainLoopId = setInterval(
+              function(){
+                data.move(data.current.lat, data.current.lon);
+                data.current.lat = data.current.lat + data.d * 0.05;
+              }, 100);
+
+          }
+      }
+
+      function info(){
+        var info = document.getElementById('info');
+        info.innerHTML = '<iframe id="iframe" src="page.html"></iframe>';
+      }
+
+      function rand(max){
+        return Math.floor((Math.random() * max) + 1);
+      }
+      
+
+      example={
+        loc: { lat: 51.126989, lon: 0.671135 },
+        city: { lat: 51.5333333333423,lon: -0.20833333333209225}
+      };
+
+      data.init(example.city.lat, example.city.lon);
+
+      data.addlabel(
+        example.city.lat + (data.d * rand(10) ),
+        example.city.lon + (data.d * rand(8) ),
+        '<button onclick="info()">'+'city 1'+'</button>');
+
+      data.addlabel(
+        example.city.lat + (data.d * rand(5) ),
+        example.city.lon + (data.d * rand(3) ),
+        '<button onclick="info()">'+'city 2'+'</button>');
+
+      initialized();
+    
+    </script>
+  </body>
+  </head>
+</html>
+

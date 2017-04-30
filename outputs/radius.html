@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Google Maps</title>
+    <script src="http://maps.google.com/maps?file=api&amp;sensor=false&amp;key=AIzaSyBAnvblkrR43StYUxbkhDpRJayMdzw8bvg" type="text/javascript"></script>
+    <script src="http://econym.org.uk/gmap/eshapes.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+    <div id="map" style="width: 800px; height: 800px;"></div>
+
+    <noscript><b>JavaScript must be enabled in order for you to use Google Maps.</b> 
+      However, it seems JavaScript is either disabled or not supported by your browser. 
+      To view Google Maps, enable JavaScript by changing your browser options, and then 
+      try again.
+    </noscript>
+ 
+
+    <script type="text/javascript">
+    //<![CDATA[
+    
+    if (GBrowserIsCompatible()) {
+
+var center=new GLatLng(37.935420, 22.946194);
+var myLatLng0 = new GLatLng(38.836290317819206, 22.946194);
+var myLatLng90 = new GLatLng(37.929922098191604, 24.08367146727572);
+var myLatLng180 = new GLatLng(37.034411371767575, 22.946194);
+var myLatLng270 = new GLatLng(37.929922098191604, 21.808716532724276);
+var myLatLngMax = new GLatLng(37.9500000000089, 23.708333333334735);
+
+var map = new GMap2(document.getElementById("map"));
+map.addMapType(G_SATELLITE_MAP);
+map.addControl(new GSmallMapControl());
+map.addControl(new GMapTypeControl());
+map.setCenter(center, 8);
+map.setMapType(G_SATELLITE_MAP);
+
+
+var icon, marker
+icon = new GIcon();
+icon.image = "markerI.png";
+marker = new GMarker(myLatLngMax, icon);
+
+
+
+        var html = "Some HTML content";
+        GEvent.addListener(marker, 'click', function(){
+            marker.openInfoWindowHtml(html);
+        });
+
+
+map.addOverlay(marker);
+
+icon.image = "aircraft.png";
+marker = new GMarker(center, icon);
+map.addOverlay(marker);
+
+
+
+
+    var bounds = map.getBounds();
+    var minor_axis = google.maps.geometry.spherical.computeDistanceBetween(myLatLng0,myLatLng180)/2;
+    var major_axis = google.maps.geometry.spherical.computeDistanceBetween(myLatLng90,myLatLng270)/2;
+    var ellipse = google.maps.Polygon.Ellipse(center,major_axis,minor_axis,0,"#fc3d21",2,1);
+      map.addOverlay(ellipse);
+
+}
+    
+    </script>
+
+  </body>
+
+</html>
+

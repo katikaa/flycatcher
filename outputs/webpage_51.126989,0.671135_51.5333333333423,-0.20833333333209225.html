@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Google Maps</title>
+    <script src="http://maps.google.com/maps?file=api&amp;sensor=false&amp;key=AIzaSyBAnvblkrR43StYUxbkhDpRJayMdzw8bvg" type="text/javascript"></script>
+    <script src="http://econym.org.uk/gmap/eshapes.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+<table><tr><td><img src='flycatcher.png' height=50/></td><td> <h1>Flycatcher  </h1></tr></table>
+
+<table><tr>
+<td>    <div id="map" style="width: 800px; height: 800px;"></div> </td>
+<td>    <div id="info" style="width: 800px; height: 800px;">
+<h2>London, England</h2>
+<h4>51.5333333333423, -0.20833333333209225</h4>
+
+<iframe src="https://en.wikipedia.org/wiki/London" style="position:relative; width: 100%; height: 43%;"></iframe><iframe src="http://wikitravel.org/en/London" style="position:relative; width: 100%; height: 43%;"></iframe>
+</td>
+
+<td>
+
+
+<div id="" style="overflow:scroll; height:700px; width:200px; position:relative; top:50px">
+<img src="https://farm3.staticflickr.com/2903/33973400980_9341185b72.jpg" style="position:relative; width: 100%" /><img src="https://farm3.staticflickr.com/2818/34357748715_f9bac29098.jpg" style="position:relative; width: 100%" /><img src="https://farm3.staticflickr.com/2850/33515578514_ba54f05cd5.jpg" style="position:relative; width: 100%" /><img src="https://farm5.staticflickr.com/4171/34357030835_c887a080d2.jpg" style="position:relative; width: 100%" /><img src="https://farm5.staticflickr.com/4185/33545984833_2bd014c329.jpg" style="position:relative; width: 100%" /><img src="https://farm3.staticflickr.com/2893/33514589244_dc193c842d.jpg" style="position:relative; width: 100%" /><img src="https://farm3.staticflickr.com/2936/34356726565_9ec0d9cc9e.jpg" style="position:relative; width: 100%" /><img src="https://farm5.staticflickr.com/4190/33514580874_f8cd77a7ac.jpg" style="position:relative; width: 100%" /><img src="https://farm3.staticflickr.com/2900/34315347296_6f4428f8c2.jpg" style="position:relative; width: 100%" /><img src="https://farm5.staticflickr.com/4156/33545668973_a09aba81e6.jpg" style="position:relative; width: 100%" />
+</div>
+</td>
+ </tr>
+</div>
+</table>
+
+
+    <noscript><b>JavaScript must be enabled in order for you to use Google Maps.</b> 
+      However, it seems JavaScript is either disabled or not supported by your browser. 
+      To view Google Maps, enable JavaScript by changing your browser options, and then 
+      try again.
+    </noscript>
+ 
+
+    <script type="text/javascript">
+    //<![CDATA[
+    
+    if (GBrowserIsCompatible()) {
+
+var center=new GLatLng(51.126989, 0.671135);
+var myLatLngMax = new GLatLng(51.5333333333423, -0.20833333333209225);
+var myLatLng0 = new GLatLng(52.02579003823261, 0.671135);
+var myLatLng90 = new GLatLng(51.118266519856476, 2.0994055376130434);
+var myLatLng180 = new GLatLng(50.22804897722379, 0.6711350000000001);
+var myLatLng270 = new GLatLng(51.118266519856476, -0.7571355376130433);
+
+var map = new GMap2(document.getElementById("map"));
+map.addMapType(G_SATELLITE_MAP);
+map.addControl(new GSmallMapControl());
+map.addControl(new GMapTypeControl());
+map.setCenter(center, 8);
+map.setMapType(G_SATELLITE_MAP);
+
+
+var icon, marker
+icon = new GIcon();
+icon.image = "markerI.png";
+marker = new GMarker(myLatLngMax, icon);
+
+
+
+        var html = "Some HTML content";
+        GEvent.addListener(marker, 'click', function(){
+            marker.openInfoWindowHtml(html);
+        });
+
+
+map.addOverlay(marker);
+
+icon.image = "aircraft.png";
+marker = new GMarker(center, icon);
+map.addOverlay(marker);
+
+
+
+
+    var bounds = map.getBounds();
+    var minor_axis = google.maps.geometry.spherical.computeDistanceBetween(myLatLng0,myLatLng180)/2;
+    var major_axis = google.maps.geometry.spherical.computeDistanceBetween(myLatLng90,myLatLng270)/2;
+    var ellipse = google.maps.Polygon.Ellipse(center,major_axis,minor_axis,0,"#fc3d21",2,1);
+      map.addOverlay(ellipse);
+
+}
+    
+    </script>
+
+  </body>
+
+</html>
+

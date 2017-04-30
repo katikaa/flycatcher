@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Google Maps</title>
+    <script src="http://maps.google.com/maps?file=api&amp;sensor=false&amp;key=AIzaSyBAnvblkrR43StYUxbkhDpRJayMdzw8bvg" type="text/javascript"></script>
+    <script src="http://econym.org.uk/gmap/eshapes.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+<table><tr><td><img src='flycatcher.png' height=50/></td><td> <h1>Flycatcher  </h1></tr></table>
+
+<table><tr>
+<td>    <div id="map" style="width: 800px; height: 800px;"></div> </td>
+<td>    <div id="info" style="width: 800px; height: 800px;">
+<h2>Patra, Peloponnisos Dytiki Ellada ke Ionio</h2>
+<h4>38.21666666667554, 21.733333333334713</h4>
+
+<iframe src="https://en.wikipedia.org/wiki/Patra" width=800 height=344></iframe><iframe src="http://wikitravel.org/en/Patra" width=800 height=344></iframe>
+</td>
+
+<td>
+
+
+<div id="" style="overflow:scroll; height:800px; width:200px">
+<img src="https://farm5.staticflickr.com/4178/33468167983_1e0998d5ac.jpg" width=200 /><img src="https://farm3.staticflickr.com/2879/34278144005_2c6f2895a5.jpg" width=200 /><img src="https://farm3.staticflickr.com/2845/34123818916_f10b263d72.jpg" width=200 /><img src="https://farm4.staticflickr.com/3937/34131874585_7a7899080e.jpg" width=200 /><img src="https://farm3.staticflickr.com/2819/33966117802_f65929fba8.jpg" width=200 /><img src="https://farm3.staticflickr.com/2817/34114720215_c098d27bcc.jpg" width=200 /><img src="https://farm3.staticflickr.com/2869/33225979043_b951e6cd74.jpg" width=200 /><img src="https://farm3.staticflickr.com/2837/33646885350_913cc84bb0.jpg" width=200 /><img src="https://farm3.staticflickr.com/2889/34026067925_8d19ecc7db.jpg" width=200 /><img src="https://farm3.staticflickr.com/2822/33182779124_02463324fd.jpg" width=200 />
+</div>
+</td>
+ </tr>
+</div>
+</table>
+
+
+    <noscript><b>JavaScript must be enabled in order for you to use Google Maps.</b> 
+      However, it seems JavaScript is either disabled or not supported by your browser. 
+      To view Google Maps, enable JavaScript by changing your browser options, and then 
+      try again.
+    </noscript>
+ 
+
+    <script type="text/javascript">
+    //<![CDATA[
+    
+    if (GBrowserIsCompatible()) {
+
+var center=new GLatLng(38.43172, 22.421977);
+var myLatLngMax = new GLatLng(38.21666666667554, 21.733333333334713);
+var myLatLng0 = new GLatLng(39.33251368759367, 22.421977);
+var myLatLng90 = new GLatLng(38.42612385039507, 23.56719546824259);
+var myLatLng180 = new GLatLng(37.53078743400481, 22.421977);
+var myLatLng270 = new GLatLng(38.42612385039507, 21.2767585317574);
+
+var map = new GMap2(document.getElementById("map"));
+map.addMapType(G_SATELLITE_MAP);
+map.addControl(new GSmallMapControl());
+map.addControl(new GMapTypeControl());
+map.setCenter(center, 8);
+map.setMapType(G_SATELLITE_MAP);
+
+
+var icon, marker
+icon = new GIcon();
+icon.image = "markerI.png";
+marker = new GMarker(myLatLngMax, icon);
+
+
+
+        var html = "Some HTML content";
+        GEvent.addListener(marker, 'click', function(){
+            marker.openInfoWindowHtml(html);
+        });
+
+
+map.addOverlay(marker);
+
+icon.image = "aircraft.png";
+marker = new GMarker(center, icon);
+map.addOverlay(marker);
+
+
+
+
+    var bounds = map.getBounds();
+    var minor_axis = google.maps.geometry.spherical.computeDistanceBetween(myLatLng0,myLatLng180)/2;
+    var major_axis = google.maps.geometry.spherical.computeDistanceBetween(myLatLng90,myLatLng270)/2;
+    var ellipse = google.maps.Polygon.Ellipse(center,major_axis,minor_axis,0,"#fc3d21",2,1);
+      map.addOverlay(ellipse);
+
+}
+    
+    </script>
+
+  </body>
+
+</html>
+
